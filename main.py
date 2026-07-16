@@ -120,8 +120,8 @@ async def create_jobs( job : JobCreate, current_user = Depends(get_current_user)
 
 
 @app.delete("/jobs/{jobs_id}", response_model= JobResponse)
-async def delete_job(job_id : int, current_user = Depends(get_current_user), db = Depends(get_db)):
-    db_job = db.query(Job).filter(Job.id == job_id, Job.user_id == current_user.id).first()
+async def delete_job(jobs_id : int, current_user = Depends(get_current_user), db = Depends(get_db)):
+    db_job = db.query(Job).filter(Job.id == jobs_id, Job.user_id == current_user.id).first()
     if not db_job:
         raise HTTPException(status_code=404, detail="Job not found")
     db.delete(db_job)
