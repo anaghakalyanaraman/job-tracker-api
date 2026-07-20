@@ -11,7 +11,6 @@ from datetime import timedelta
 from fastapi.security import OAuth2PasswordRequestForm
 from fastapi.middleware.cors import CORSMiddleware
 
-Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
